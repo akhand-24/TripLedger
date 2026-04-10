@@ -25,8 +25,8 @@ const TripView = () => {
   const fetchTripData = async () => {
     try {
       const [tripRes, expenseRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/trips/${id}`),
-        axios.get(`http://localhost:5000/api/expenses/trip/${id}`)
+        axios.get(`https://tripledger-gr2n.onrender.com/api/trips/${id}`),
+        axios.get(`https://tripledger-gr2n.onrender.com/api/expenses/trip/${id}`)
       ]);
       setTrip(tripRes.data);
       setData(expenseRes.data);
@@ -46,7 +46,7 @@ const TripView = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/expenses', {
+      await axios.post('https://tripledger-gr2n.onrender.com/api/expenses', {
         tripId: id,
         description: desc,
         amount: Number(amount),
@@ -62,7 +62,7 @@ const TripView = () => {
 
   const handleSettleUp = async (toUserId, amt) => {
     try {
-      await axios.post('http://localhost:5000/api/expenses/settle', {
+      await axios.post('https://tripledger-gr2n.onrender.com/api/expenses/settle', {
         tripId: id,
         toUserId,
         amount: amt

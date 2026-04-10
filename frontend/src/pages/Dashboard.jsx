@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const fetchTrips = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/trips');
+      const res = await axios.get('https://tripledger-gr2n.onrender.com/api/trips');
       setTrips(res.data);
     } catch (err) {
       console.error(err);
@@ -25,7 +25,7 @@ const Dashboard = () => {
     e.preventDefault();
     if (!newTripName) return;
     try {
-      await axios.post('http://localhost:5000/api/trips', { name: newTripName });
+      await axios.post('https://tripledger-gr2n.onrender.com/api/trips', { name: newTripName });
       setNewTripName('');
       fetchTrips();
     } catch (err) {
@@ -37,7 +37,7 @@ const Dashboard = () => {
     e.preventDefault();
     if (!joinTripId) return;
     try {
-      await axios.post('http://localhost:5000/api/trips/join', { tripId: joinTripId });
+      await axios.post('https://tripledger-gr2n.onrender.com/api/trips/join', { tripId: joinTripId });
       setJoinTripId('');
       fetchTrips();
     } catch (err) {
